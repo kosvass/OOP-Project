@@ -1,0 +1,30 @@
+abstract class User {
+    private String name;
+    private String telephone;
+
+    User()
+    {
+
+    }
+
+    User(String name, String telephone){
+        this.name=name;
+        this.telephone=telephone;
+    }
+
+    void setName(String name){
+        this.name=name;
+    }
+
+    String getName(){
+        return name;
+    }
+
+    void setTelephone(String telephone){
+        this.telephone=telephone;
+    }
+
+    String getTelephone(){
+        return telephone;
+    }
+}
