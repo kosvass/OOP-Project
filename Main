@@ -1,0 +1,54 @@
+public class Main {
+
+    public static void main(String args[])
+    {
+        Admin a1=new Admin("Kwnstantinos", "6986742516");
+        Beneficiary b1=new Beneficiary("Pasxalis","6981126983");
+        Beneficiary b2=new Beneficiary("Xristos","6987512458",3);
+        Donator d1=new Donator("Giwrgos","6924572357");
+
+        Organization org=new Organization("Organization",a1);
+        Menu menu=new Menu(org);
+
+        Material milk = new Material("Milk","Cow Milk",1,250,500,1000);
+        Material flower = new Material("Flower","Whole Grinding",2,100,300,600);
+        Material rice = new Material("Rice","Basmati", 3,200,400,700);
+        Service MedicalSupport = new Service("First Aid Help","24/7",4);
+        Service NurserySupport = new Service("Pharmaceutical Treatment","12 Hours",5);
+        Service BabySitting = new Service("Safekeeping of children","4 Hours",6);
+
+        org.addEntity(milk);
+        org.addEntity(flower);
+        org.addEntity(rice);
+        org.addEntity(MedicalSupport);
+        org.addEntity(NurserySupport);
+        org.addEntity(BabySitting);
+
+        org.insertBeneficiary(b1);
+        org.insertBeneficiary(b2);
+        org.insertDonator(d1);
+
+
+        RequestDonation rdFlower = new RequestDonation(flower,200);
+        RequestDonation rdRice = new RequestDonation(rice,550);
+        RequestDonation rdMilk = new RequestDonation(milk,900);
+        RequestDonation rdMedicalSupport = new RequestDonation(MedicalSupport,5);
+        RequestDonation rdNurserySupport = new RequestDonation(NurserySupport,23);
+        RequestDonation rdBabySitting = new RequestDonation(BabySitting,35);
+
+
+        RequestDonationList rdList = new RequestDonationList();
+
+        rdList.add(rdFlower,org);
+        rdList.add(rdRice,org);
+        rdList.add(rdMilk,org);
+        rdList.add(rdBabySitting,org);
+        rdList.add(rdMedicalSupport,org);
+        rdList.add(rdNurserySupport,org);
+
+        org.setCurrentDonations(rdList);
+
+        menu.getMenu();
+
+    }
+}
