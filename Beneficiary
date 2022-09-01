@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+
+class Beneficiary extends User {
+    private int noPersons;
+    ArrayList<RequestDonation> receivedList = new ArrayList<>();
+    ArrayList<Requests> requestsList = new ArrayList<>();
+
+    Beneficiary(){
+
+    }
+
+    Beneficiary(String name, String telephone){
+        super(name, telephone);
+        noPersons=1;
+        receivedList = new ArrayList<RequestDonation>();
+        requestsList =new ArrayList<>();
+    }
+
+    Beneficiary(String name, String telephone, int noPersons){
+        super(name, telephone);
+        this.noPersons = noPersons;
+        receivedList = new ArrayList<RequestDonation>();
+        requestsList = new ArrayList<>();
+    }
+
+    public int getNoPersons(){
+        return noPersons;
+    }
+
+    public void addRequests(Requests r){
+        requestsList.add(r);
+    }
+
+    public void removeRequest(int index){
+        requestsList.remove(index);
+    }
+
+    public void modifyRequest(int index, double qn){
+        requestsList.get(index).modify(index, qn);
+    }
+
+    public void commitRequest(RequestDonationList rdl, Organization o){
+        int i=0;
+        for(RequestDonation rd: rdl.getList()){
+            o.getCurrentDonations().modify(i, o.getCurrentDonations().getWithIndex(i).getQuantity() - rd.getQuantity());
+            i++;
+        }
+        System.out.println("Donation is complete!");
+    }
+
+    public void reset(){
+        requestsList.clear();
+    }
+}
