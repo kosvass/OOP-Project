@@ -1,0 +1,21 @@
+class Admin extends User {
+
+    private boolean isAdmin;
+
+    Admin(){
+
+    }
+
+    Admin(String name, String telephone){
+        super(name,telephone);
+        isAdmin=true;
+    }
+
+    void setAdmin(boolean isAdmin){
+        this.isAdmin=isAdmin;
+    }
+
+    boolean getAdmin(){
+        return isAdmin;
+    }
+}
